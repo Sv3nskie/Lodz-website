@@ -53,6 +53,21 @@ a:hover { color: var(--ink-muted); }
 
 ::selection { background: var(--tile-bg); }
 
+/* Scrollbar: thin, warm-grey, no arrows — Firefox first, then WebKit */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #c9c3b8 transparent;
+}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: #c9c3b8;
+  border-radius: 8px;
+  border: 2px solid var(--paper);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--ink-faint); }
+::-webkit-scrollbar-button { display: none; }
+
 img { display: block; }
 
 /* Shared type roles ------------------------------------------------- */
