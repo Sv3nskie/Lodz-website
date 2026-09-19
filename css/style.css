@@ -26,6 +26,12 @@
 
 html { scroll-behavior: smooth; }
 
+/* In-page anchors: stop short of the fixed header so section tops aren't hidden under it. */
+section[id],
+footer[id],
+div[id] { scroll-margin-top: 96px; }
+#top { scroll-margin-top: 0; }
+
 html, body {
   margin: 0;
   padding: 0;
