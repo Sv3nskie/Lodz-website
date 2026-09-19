@@ -38,3 +38,39 @@
   var p = vid.play();
   if (p && typeof p.catch === 'function') p.catch(function () { /* still image stays */ });
 })();
+
+// Tiles on touch devices: no hover, so the tile nearest the viewport centre
+// gets the slow zoom instead while the user scrolls.
+(function () {
+  if (!window.matchMedia || !window.matchMedia('(hover: none)').matches) return;
+  var tiles = Array.prototype.slice.call(document.querySelectorAll('.tile'));
+  if (!tiles.length) return;
+
+  var current = null;
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var mid = window.innerHeight / 2;
+    var best = null;
+    var bestDist = Infinity;
+    for (var i = 0; i < tiles.length; i++) {
+      var r = tiles[i].getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) continue; // off-screen
+      var d = Math.abs((r.top + r.bottom) / 2 - mid);
+      if (d < bestDist) { bestDist = d; best = tiles[i]; }
+    }
+    if (best === current) return;
+    if (current) current.classList.remove('is-active');
+    if (best) best.classList.add('is-active');
+    current = best;
+  }
+
+  function onScroll() {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
