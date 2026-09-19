@@ -29,12 +29,10 @@
   <section id="top" class="hero">
     <img class="hero__still" src="images/hero-still.jpg" alt="">
     <div class="hero__video" id="hero-video">
-      <iframe
-        src="https://player.vimeo.com/video/1224612721?muted=1&autoplay=1&loop=1&background=1&playsinline=1&dnt=1&app_id=122963"
-        title="lódz"
-        frameborder="0"
-        allow="autoplay; fullscreen; picture-in-picture"
-        id="hero-iframe"></iframe>
+      <video id="hero-vid" autoplay muted loop playsinline preload="auto" poster="images/hero-still.jpg" aria-hidden="true" tabindex="-1">
+        <source src="images/hero-720.mp4" type="video/mp4" media="(max-width: 900px)">
+        <source src="images/hero.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="hero__scrim"></div>
     <div class="hero__content">

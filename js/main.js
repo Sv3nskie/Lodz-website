@@ -22,36 +22,19 @@
   update();
 })();
 
-// Hero video: only reveal the Vimeo iframe once it is actually playing.
+// Hero video: reveal the <video> only once it is actually playing, so a
+// phone that blocks autoplay (e.g. Low Power Mode) keeps showing the still.
 (function () {
   var wrap = document.getElementById('hero-video');
-  var iframe = document.getElementById('hero-iframe');
-  if (!wrap || !iframe) return;
+  var vid = document.getElementById('hero-vid');
+  if (!wrap || !vid) return;
 
-  function post(method, value) {
-    if (!iframe.contentWindow) return;
-    iframe.contentWindow.postMessage(JSON.stringify({ method: method, value: value }), '*');
-  }
+  function reveal() { wrap.classList.add('is-playing'); }
 
-  function subscribe() {
-    post('addEventListener', 'play');
-    post('addEventListener', 'playing');
-    post('addEventListener', 'timeupdate');
-  }
+  vid.addEventListener('playing', reveal);
+  if (!vid.paused && vid.readyState >= 2) reveal();
 
-  window.addEventListener('message', function (e) {
-    if (typeof e.origin !== 'string' || e.origin.indexOf('vimeo.com') === -1) return;
-    var data = e.data;
-    if (typeof data === 'string') {
-      try { data = JSON.parse(data); } catch (err) { return; }
-    }
-    if (!data) return;
-    if (data.event === 'ready') subscribe();
-    if (data.event === 'play' || data.event === 'playing' || data.event === 'timeupdate') {
-      wrap.classList.add('is-playing');
-    }
-  });
-
-  iframe.addEventListener('load', subscribe);
-  subscribe();
+  // Some browsers need an explicit play() call even with the autoplay attribute.
+  var p = vid.play();
+  if (p && typeof p.catch === 'function') p.catch(function () { /* still image stays */ });
 })();
