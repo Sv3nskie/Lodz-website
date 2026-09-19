@@ -53,20 +53,20 @@ a:hover { color: var(--ink-muted); }
 
 ::selection { background: var(--tile-bg); }
 
-/* Scrollbar: thin, warm-grey, no arrows — Firefox first, then WebKit */
+/* Scrollbar: hairline-thin, dark, fully rounded, no track or arrows */
 html {
   scrollbar-width: thin;
-  scrollbar-color: #c9c3b8 transparent;
+  scrollbar-color: rgba(26, 26, 24, 0.55) transparent;
 }
-::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: #c9c3b8;
-  border-radius: 8px;
-  border: 2px solid var(--paper);
+  background: rgba(26, 26, 24, 0.55);
+  border-radius: 999px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--ink-faint); }
+::-webkit-scrollbar-thumb:hover { background: var(--ink); }
 ::-webkit-scrollbar-button { display: none; }
+::-webkit-scrollbar-corner { background: transparent; }
 
 img { display: block; }
 
