@@ -810,10 +810,6 @@ img { display: block; }
     from { transform: translateX(0); }
     to   { transform: translateX(-100%); }
   }
-  @media (prefers-reduced-motion: reduce) {
-    .brands__set,
-    .brands__set--dup { animation: none; }
-  }
 }
 
 @media (max-width: 600px) {
