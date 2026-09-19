@@ -47,12 +47,23 @@
   <!-- Brand row -->
   <section id="merken" class="brands" aria-label="Merken">
     <div class="brands__grid">
-      <img src="images/brand-armani-box.png" alt="Giorgio Armani">
-      <img src="images/brand-versace-box.png" alt="Versace">
-      <img src="images/brand-hugoboss-box.png" alt="Hugo Boss">
-      <img src="images/brand-dolce-box.png" alt="Dolce &amp; Gabbana">
-      <img src="images/brand-stoneisland-box.png" alt="Stone Island">
-      <img src="images/brand-bvlgari-box.png" alt="Bvlgari">
+      <div class="brands__set">
+        <img src="images/brand-armani-box.png" alt="Giorgio Armani">
+        <img src="images/brand-versace-box.png" alt="Versace">
+        <img src="images/brand-hugoboss-box.png" alt="Hugo Boss">
+        <img src="images/brand-dolce-box.png" alt="Dolce &amp; Gabbana">
+        <img src="images/brand-stoneisland-box.png" alt="Stone Island">
+        <img src="images/brand-bvlgari-box.png" alt="Bvlgari">
+      </div>
+      <!-- Duplicate set: only shown on phones, where the row loops as a sliding strip -->
+      <div class="brands__set brands__set--dup" aria-hidden="true">
+        <img aria-hidden="true" src="images/brand-armani-box.png" alt="">
+        <img aria-hidden="true" src="images/brand-versace-box.png" alt="">
+        <img aria-hidden="true" src="images/brand-hugoboss-box.png" alt="">
+        <img aria-hidden="true" src="images/brand-dolce-box.png" alt="">
+        <img aria-hidden="true" src="images/brand-stoneisland-box.png" alt="">
+        <img aria-hidden="true" src="images/brand-bvlgari-box.png" alt="">
+      </div>
     </div>
   </section>
 
